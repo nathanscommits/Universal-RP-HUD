@@ -1,0 +1,92 @@
+
+
+
+<!-- 
+    things to be displayed on the fight screen:
+    own health - displayed on your entry in the player list
+    targets health - displayed on their entry in the player list
+    turn order (own screen?) the order of the player list
+    current turn (own screen?) Displayed by highlighting the active player in the player list
+    loadout abilities - skill cards are under the player list
+    roll options (const, int, etc) - a seperate screen for rolls like this?
+    flee fight, end fight, skip turn - displayed as skill cards
+    own status effects - displayed on own entry in player list
+    target status effects - displayed on targets entry in player list
+    remaining time before turn timer expires - ignore for now
+    vote to kick player - displayed as an X on the player list
+ -->
+
+ <script src="/js/fight.js"></script>
+
+<div  class="targetScreen" id="fightTargetList">
+    <div class="target scroll" id="fightTargets"></div>
+</div>
+
+<div id="fight-action">
+    <div class="flex">
+        <div class="fight-action-text" style="width: 100%;"> <p>Select a target and card to use.</p> </div>
+    </div>
+</div>
+
+<div class="flex" id="fight-actions">
+ <div class="half" id="loadout">
+    
+    <% const actionCards = [
+        {
+            name: 'Attack',
+            desc: 'basic attack action',
+            quantity: '1',
+            img: 'https://c.tenor.com/toHKHkPTnPoAAAAC/han-solo-shoot.gif'
+        },
+        {
+            name: 'Skip Turn',
+            desc: 'Choose to end your turn without any further actions',
+            quantity: '1',
+            img: 'https://media0.giphy.com/media/lPiUYaq8PX8svtZQ4L/200.gif'
+        },
+        {
+            name: 'Flee',
+            desc: 'try to escape',
+            quantity: '1',
+            img: 'https://c.tenor.com/mUpOU47puSgAAAAC/star-wars-run.gif'
+        },
+        {
+            name: 'End Fight',
+            desc: 'the fight ends if everybody agrees',
+            quantity: '1',
+            img: 'https://compote.slate.com/images/c6629d94-2c93-4e43-90dc-6f7175061053.gif'
+        },
+        {
+            name: 'Vote To Kick',
+            desc: 'Attempt to remove a person from the fight. WARNING: kicking a player without a good reason may have consequences.',
+            quantity: '1',
+            img: 'https://c.tenor.com/3yv0O_F085IAAAAC/star-wars-luke.gif'
+        },
+        
+    ] %>
+
+    <div class="skills-list">
+        
+        <% actionCards.map( (cel, i) => { %>
+           <button style="background-color: rgb(226, 226, 226);" id="fightCard:<%= i %>" onclick="fightCard('<%= cel.name %>', '<%= cel.quantity %>', '<%= cel.desc %>', 'fightCard:<%= i %>', `<%= cel.img %>`)"><%= cel.name %></button>
+        <% }) %>
+        <% player.equipped.map( (cel, i) => { %>
+           <button id="fightCard:<%= i + actionCards.length %>" onclick="fightCard('<%= cel.name %>', '<%= cel.quantity %>', '<%= cel.desc %>', 'fightCard:<%=  i + actionCards.length %>', `<%= cel.img %>`)"><%= cel.name %></button>
+        <% }) %>
+        
+    </div>
+
+    <div class="spacer"></div>
+</div>
+<div class="half">
+    
+    <div id="fight-hero-item" class="hero-item"> 
+        <div id="fight-hero-card" class="hero-card  card">
+            <div id="fightCardId" style="--front: url('<%= actionCards[0].img %>');" class="card inv-card">
+                <div id="fight-card-name" class="card-name"><span><%= actionCards[0].name %></span></div>
+                <div id="fight-card-desc" class="card-desc"><p><%= actionCards[0].desc %></p><img src="/swbanner.jpeg" alt=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

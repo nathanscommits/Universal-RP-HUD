@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <style>
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .form {
+            width: 80%;
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <div class="form">
+        <form action="/inventory" method="post"><br>
+            Name:<input type="text" name="item[name]" id=""><br>
+            Image:<input type="text" name="item[img]" id=""><br>
+            Description:<input type="text" name="item[desc]" id=""><br>
+            #:<input type="number" name="item[quantity]" id=""><br>
+            uuid:<input type="text" name="uuid" value="3ffd8a53-ff55-4632-8ebe-54b73b07e1a1" id=""><br>
+            rpsim:<input type="text" name="rpsim" value="swrp" id=""><br>
+            op:
+            <select name="op" id="op" value="add">
+                <option value="add">add</option>
+                <option value="remove">remove</option>
+                <option value="withdraw">withdraw</option>
+                <option value="deposit">deposit</option>
+                <option value="equip">equip</option>
+                <option value="unequip">unequip</option>
+            </select>
+            <br>
+            playerName:<input type="text" name="playerName" value="Sharky" id=""><br>
+            <input type="submit" value="POST">
+        </form>
+    </div>
+</body>
+</html>

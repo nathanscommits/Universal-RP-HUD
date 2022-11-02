@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/card.css" />
+    <link rel="stylesheet" href="/buttons.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/3.0.5/socket.io.min.js"></script>
+    <script>
+        const socket = io("ws://localhost:8000");
+        const UUID = '<%- params.uuid %>'
+        const REGION = '<%- params.region %>'
+        const player = {
+            uuid: '<%- player.uuid %>',
+            playerName: '<%- player.playerName %>',
+            rpsim: '<%- player.rpsim %>',
+            inventorySize: '<%- player.inventorySize  %>',
+            bankSize: '<%- player.bankSize  %>',
+            equipNum: '<%- player.equipNum  %>',
+        }
+        async function postData(url, data) {
+            // Default options are marked with *
+            const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+            return response.json(); // parses JSON response into native JavaScript objects
+        }
+    </script>
+    <script src="/js/navigation.js" ></script>
+    <script src="/js/location.js" ></script>
+    <script src="/js/inventory.js" ></script>
+    <script src="/js/target.js" ></script>
+    
+</head>
+<body>
+
+    <%- include('resources.ejs', {player: player}) %>
+    
+    <div class="main">
+        
+        <div onclick="join_fight()" class="popup" style="color: red;" id="combat_request"></div>
+        <div class="popup" style="color: red;" id="trade_request"></div>
+
+        
+        <div id="fightScreen">
+        <%- include('fight.ejs', {player: player}) %>
+        </div> 
+        
+    <%- include('bag.ejs', {player: player}) %>
+   
+    <div class="targetScreen" id="targetScreen">
+        <div id="targetOptions" class="tabs"></div>
+        <div class="target" id="target"></div>
+    </div>
+
+    <div style="display: none;" id="startFightScreen"><button onclick="startFight()">Click here when everyone is ready to start the fight!</button></div>
+   
+    <div id="stats">
+        <div id="location"></div>
+        <%= JSON.stringify(params) %>
+    </div>
+</div>
+    <%- include('nav.ejs') %>
+    <script src="/js/card.js" ></script>
+</body>
+</html>

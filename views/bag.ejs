@@ -1,0 +1,52 @@
+
+<div class="scroll" id="inventory">
+    
+    <div id="inv-hero-buttons" class="hero-buttons">
+        <div class="button_base b08_3d_pushback">
+            <div>Display</div>
+            <div>Show</div>
+        </div>
+        <div class="button_base b08_3d_pushback">
+            <div>Destroy</div>
+            <div>Remove</div>
+        </div>
+    </div>
+    <div id="inv-hero-item" class="hero-item"> 
+        <div id="inv-hero-card" class="hero-card  card"></div>
+    </div>
+    
+    <div class="table">
+        <% player.inventory.map( (cel, i) => { %>
+            <div class="cel">
+                <div id="card:<%= i %>" style="--front: url('<%= cel.img %>');" onclick="heroCard('<%= cel.name %>', '<%= cel.quantity %>', '<%= cel.desc %>', '<%= i %>')" class="card animated inv-card">
+                    <div id="card-name:<%= i %>" class="card-name"><span><%= cel.name %></span></div>
+                    <div id="card-desc:<%= i %>" class="card-desc"><p><%= cel.desc %></p><img src="/swbanner.jpeg" alt=""></div>
+                    <div id="card-quantity:<%= i %>" class="quantity">⨯<%= cel.quantity %></div>
+                </div>
+            </div>
+        <% }) %>
+        <% let num = player.inventory.length %>
+        <% while(num++ < player.inventorySize) { %>
+            <div class="cel"></div>
+        <% } %>
+    </div>
+
+    <div class="table">
+        <% player.equipped.map( (cel, i) => { %>
+            <% const id = i + parseInt(player.inventorySize) %>
+            <div class="cel">
+                <div id="card:<%= id %>" style="--front: url('<%= cel.img %>');" onclick="heroCard('<%= cel.name %>', '<%= cel.quantity %>', '<%= cel.desc %>', '<%= id %>')" class="card animated inv-card">
+                    <div id="card-name:<%= id %>" class="card-name"><span><%= cel.name %></span></div>
+                    <div id="card-desc:<%= id %>" class="card-desc"><p><%= cel.desc %></p><img src="/swbanner.jpeg" alt=""></div>
+                    <div id="card-quantity:<%= id %>" class="quantity">⨯<%= cel.quantity %></div>
+                </div>
+            </div>
+        <% }) %>
+        <% num = player.equipped.length %>
+        <% while(num++ < player.equipNum) { %>
+            <div class="cel"></div>
+        <% } %>
+    </div>
+
+    <div class="spacer"></div>
+</div>

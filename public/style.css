@@ -1,0 +1,471 @@
+@font-face {
+    font-family: "Starjedi";
+    src: url('DeathStar-VmWB.ttf');
+}
+@font-face {
+    font-family: "aurebesh";
+    src: url('Aurebesh-English.ttf');
+}
+
+html, body {
+    background: rgb(27, 27, 27);
+    background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80');
+    color: rgb(241, 241, 241);
+    font-size: 1.0rem;
+    margin: 0;
+    /* font-family: 'Comic Neue', cursive; */
+    font-family: 'Starjedi';
+    height: 100%;
+    width: 600px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+body  {
+    padding-top: 50px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    /* padding: 20px ; */
+    justify-content: center;
+    align-content: stretch;
+}
+
+.cel {
+    background: #303030;
+    background: url('square.svg');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: calc(150px - 4px);
+    height: calc(225px - 4px);
+    border: 2px rgb(0, 0, 0) solid;
+
+    
+    /* padding: 10px; */
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    text-align: center;
+}
+.inv-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.inv-card img{
+    height: 100%;
+    width: 100%;
+}
+.inv-card:hover {
+    cursor: pointer;
+}
+
+.hero-item{
+    width: 600px;
+    height: 650px;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.hero-card{
+    margin: auto;
+    width: 400px;
+    height: 600px;
+}
+
+.hero-card .card-name{
+    font-size: 150%;
+    width: 280px;
+}
+.hero-card .card-desc{
+    font-size: 90%;
+    width: 100%;
+}
+.hero-card .quantity{
+    font-size: 250%;
+    padding: 0;
+    text-align: center;
+    padding-top: 25px;
+    width: 100px;
+    height: 75px;
+}
+
+.hero-item p {
+    padding: 20px;
+    font-size: 1rem;
+}
+.card-info{
+    background-color: #f1f1f1;
+    color: #303030;
+    width: 66.66%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+button {
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    /* font-family: 'Starjedi'; */
+    font-family: 'aurebesh';
+    letter-spacing: 3px;
+}
+button:hover {
+    background: #000;
+    color: #fff;
+}
+.card-info button{
+    width: 100%;
+}
+.hero-info {
+    align-self: flex-start;
+    width: 100%;
+    height: 75%;
+}
+.hero-buttons {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.hero-buttons div {
+    width: 100%;
+    height: 40px;
+    font-size: 1.5rem;
+  /* font-family: 'Starjedi'; */
+  font-family: 'aurebesh';
+}
+
+.quantity {
+    background: #dba221;
+    color: rgb(26, 26, 26);
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+
+    font-size: 120%;
+    padding: 0;
+    text-align: center;
+    padding-top: 12px;
+    width: 45px;
+    height: 33px;
+}
+.card-name{
+    border-radius: 0 0 10% 0;
+    background: #1b180cd7;
+    color: #dba221;
+    font-size: 50%;
+    width: 65%;   
+    word-wrap: break-word;
+    padding: 5% 5%;
+    text-align: left;
+    letter-spacing: 1px;
+    border-bottom: 4px solid #dba221;
+    border-right: 4px solid #dba221;
+}
+
+.card-desc {
+    letter-spacing: 1px;
+    width: 146px;
+    position: absolute;
+    bottom: 0;
+    font-size: 30%;
+}
+/* .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #ffffff72;
+} */
+.card-desc p {
+    /* background: #3a200eca; */
+    /* border: 1px solid #ffffff; */
+    background: #ffffff87;
+    padding: 3%;
+    margin: 2%;
+    text-align: left;
+    word-wrap: break-word;
+    color: rgba(0, 0, 0, 0.826);
+    border-radius: 5px;
+}
+.card-desc img{
+    width: 100%;
+    opacity: 50%;
+}
+
+h2 {
+    text-align: center;
+}
+
+#inventory {
+   display: none;
+   transition: 0.3s;
+}
+#bank {
+    display: none;
+    transition: 0.3s;
+}
+#stats {
+    display: none;
+}
+#inv-hero-item {
+    display: none;
+}
+
+
+.tabs{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 50px;
+}
+.tabs div{
+    width: 100%;
+    height: 100%;
+  
+  font-size: 1.5rem;
+  /* font-family: 'Starjedi'; */
+  font-family: 'aurebesh';
+}
+
+.active div {
+    color: #000000 !important;
+    background-color: #dba221 !important;
+}
+.resources {
+    overflow: hidden;
+    border: 1px solid rgb(48, 48, 48);
+    background-color: #000;
+    display: flex;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 50px;
+}
+.spacer {
+    height: 100px;
+}
+.resources div{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    text-align: center;
+}
+.stat {
+    width: 33.33%;
+    transition: 0.3s;
+    font-size: 100%;
+    text-align: center;
+    color: #dba221;
+}
+
+.target button{
+    width: 100%;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    height: 50px;
+    text-align: left;
+    position: relative;
+    font-family: 'Starjedi';
+}
+.target button span{
+    text-align: right;
+    position: absolute;
+    right: 10px;
+}
+#health {
+    color: rgb(253, 90, 90);
+}
+#currency {
+    color: #ffffff;
+}
+
+.main {
+    height: 100%;
+    overflow: scroll;
+    margin-bottom: 50px;
+}
+/* .main div {
+    padding: 10px 0;
+} */
+
+::-webkit-scrollbar {
+    display: none;
+  }
+
+  #currency img {
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+  }
+
+  #health img {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+  }
+
+  .visible {
+    display: block;
+  }
+  #targetScreen {
+    position: relative;
+    height: calc(100% - 100px);
+    margin-bottom: 100px;
+    overflow: scroll;
+  }
+  .target {
+    height: 100%;
+  }
+  #targetOptions{
+    display: none;
+    width: 100%;
+  }
+  .selectedButton{
+    background-color: #dba221;
+  }
+
+  .popup {
+    background: #fff;
+    color: #000;
+  }
+ .bottom {
+    bottom: 0;
+    left: 0;
+    width: 600px;
+    z-index: 200;
+    position: fixed;
+ }
+
+.scroll {
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+}
+#fightTargetList {
+    /* max-height: 250px; */
+    margin-top: 0px;
+    height: 318px;
+    overflow: scroll;
+    background-color: #eee;
+}
+#fightTargets button{
+    height: 75px;
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 1.2rem;
+}
+#fightScreen {
+    display: none;
+}
+
+button img{
+    width: 20px;
+    height: 20px;
+}
+
+.turn-number{
+    width: 10%;
+    height: 75px;
+    
+    text-align: center;
+    line-height: 75px;
+}
+.target-details{
+    width: 80%;
+    position: relative;
+    
+    line-height: 37.5px;
+}
+#fightTab {
+    display: none;
+}
+#fightTargets button{
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.flex {
+    display: flex;
+}
+.half {
+    width: 300px;
+}
+.skills-list {
+    height: 455px;
+    overflow: scroll;
+    background-color: #eee;
+}
+.skills-list button:hover {
+    background: #000000;
+    color: rgb(255, 255, 255);
+}
+.skills-list button {
+    width: 100%;
+    font-family: 'Starjedi';
+    text-align: left;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: .9rem;
+}
+
+#fight-hero-item,  #fight-hero-card{
+    width: 300px;
+    height: 450px;
+    margin: 0;
+}
+#fight-hero-card {
+    width: 290px;
+}
+
+#fight-hero-card .card-name{
+    font-size: 100%;
+    width: 300px;
+}
+#fight-hero-card .card-desc{
+    font-size: 90%;
+    width: 100%;
+} 
+
+.fight-action-button {
+    width: 40%;
+}
+
+.fight-action-button button:hover {
+    background-color: #dba221;
+    color: #000;
+}
+.fight-action-button button {
+    width: 100%;
+    height: 100%;
+   background-color: #000;
+   color: #fff;
+}
+
+.fight-action-text{
+    width: 60%;
+    height: 70px;
+    background: #000000;
+    color: rgb(255, 255, 255);
+    padding-left: 10px; 
+    text-align: center;
+}

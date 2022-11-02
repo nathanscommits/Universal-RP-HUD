@@ -1,0 +1,10 @@
+<div id="resources" class="resources">
+    <div class="stat" id="name"><%= player.playerName %></div>
+    
+    <div class="stat" id="health">
+        <% for(let i = player.health; i > 0; i--) {%>
+            <img src="/health.svg" alt="">
+        <% } %>
+    </div>
+    <div class="stat" id="currency"><img src="/credits.svg" alt="" /><%= player.currency %></div>
+</div>
